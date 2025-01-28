@@ -8,6 +8,7 @@
 using namespace Il2Chad::Imports;
 using StringPair = std::pair<std::string, std::string>;
 
+static std::map<std::string, Il2CppClass*> classes;
 static std::map<StringPair, size_t> fieldOffsets;
 static std::map<StringPair, Il2Chad::Metadata::Property *> properties;
 static std::map<StringPair, void *> methods;
@@ -19,11 +20,12 @@ static std::string getClassFQN(Il2CppClass *klass) {
     if (namespaceName && namespaceName[0] != '\0') {
         return std::string(namespaceName) + "." + klassName;
     }
-    return std::string(klassName);
+    return klassName;
 }
 
 static void index_class(Il2CppClass *klass) {
     auto klassName = getClassFQN(klass);
+    classes[klassName] = klass;
 
     // index fields
     void *iter = nullptr;
@@ -88,14 +90,18 @@ void Il2Chad::Metadata::initialize() {
     }
 }
 
-size_t Il2Chad::Metadata::getFieldOffset(const char *className, const char *fieldName) {
-    return fieldOffsets[{className, fieldName}];
+Il2CppClass * Il2Chad::Metadata::get_class(const char *class_name) {
+    return classes[class_name];
 }
 
-Il2Chad::Metadata::Property *Il2Chad::Metadata::getProperty(const char *className, const char *propertyName) {
-    return properties[{className, propertyName}];
+size_t Il2Chad::Metadata::get_field_offset(const char *class_name, const char *field_name) {
+    return fieldOffsets[{class_name, field_name}];
 }
 
-void *Il2Chad::Metadata::getMethod(const char *className, const char *methodName) {
-    return methods[{className, methodName}];
+Il2Chad::Metadata::Property *Il2Chad::Metadata::get_property(const char *class_name, const char *property_name) {
+    return properties[{class_name, property_name}];
+}
+
+void *Il2Chad::Metadata::get_method(const char *class_name, const char *method_name) {
+    return methods[{class_name, method_name}];
 }

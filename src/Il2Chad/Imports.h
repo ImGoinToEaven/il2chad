@@ -31,6 +31,13 @@ namespace Il2Chad::Imports {
     IL2CPP_API(MethodInfo const*, il2cpp_property_get_set_method, PropertyInfo const* prop)
 
     IL2CPP_API(char const*, il2cpp_method_get_name, MethodInfo const* method)
+
+    IL2CPP_API(Il2CppClass*, il2cpp_object_get_class, Il2CppObject* obj)
+    IL2CPP_API(Il2CppObject*, il2cpp_object_new, Il2CppClass* klass)
+    IL2CPP_API(MethodInfo*, il2cpp_class_get_method_from_name, Il2CppClass* klass, const char* name, int arg_count)
+
+    IL2CPP_API(Il2CppObject*, il2cpp_runtime_invoke_convert_args, MethodInfo* method, void* obj, Il2CppObject** params, int paramCount, Il2CppException** exc)
+    IL2CPP_API(Il2CppObject*, il2cpp_runtime_invoke, MethodInfo* method, void* obj, void** params, Il2CppException** exc)
 }
 
 #undef IL2CPP_API

@@ -1,5 +1,7 @@
 #pragma once
 
+class Il2CppClass;
+
 namespace Il2Chad::Metadata {
     /**
      * Initializes metadata cache
@@ -7,24 +9,29 @@ namespace Il2Chad::Metadata {
     void initialize();
 
     /**
-     *
-     * @param className Case-sensitive class name
-     * @param fieldName Case-sensitive field name
+     * @param class_name Case-sensitive, fully qualified class name
+     * @return Class pointer or nullptr if not found
+     */
+    Il2CppClass *get_class(const char *class_name);
+
+    /**
+     * @param class_name Case-sensitive class name
+     * @param field_name Case-sensitive field name
      * @return Field offset or SIZE_MAX if not found
      */
-    size_t getFieldOffset(const char *className, const char *fieldName);
+    size_t get_field_offset(const char *class_name, const char *field_name);
 
     struct Property {
         void *getter;
         void *setter;
     };
 
-    Property *getProperty(const char *className, const char *propertyName);
+    Property *get_property(const char *class_name, const char *property_name);
 
     /**
-     * @param className Case-sensitive class name
-     * @param methodName Case-sensitive method name
+     * @param class_name Case-sensitive class name
+     * @param method_name Case-sensitive method name
      * @return Method pointer or nullptr if not found
      */
-    void *getMethod(const char *className, const char *methodName);
+    void *get_method(const char *class_name, const char *method_name);
 }

@@ -1,9 +1,11 @@
 #pragma once
 
+class Il2CppObject;
 struct Il2CppDomain;
 struct Il2CppAssembly;
 struct Il2CppImage;
-struct Il2CppClass;
+class Il2CppClass;
+class Il2CppException;
 
 struct MethodInfo {
     void *methodPointer;
