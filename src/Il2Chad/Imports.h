@@ -38,6 +38,9 @@ namespace Il2Chad::Imports {
 
     IL2CPP_API(Il2CppObject*, il2cpp_runtime_invoke_convert_args, MethodInfo* method, void* obj, Il2CppObject** params, int paramCount, Il2CppException** exc)
     IL2CPP_API(Il2CppObject*, il2cpp_runtime_invoke, MethodInfo* method, void* obj, void** params, Il2CppException** exc)
+
+    //Il2CppString* il2cpp_string_new(const char* str)
+    IL2CPP_API(Il2CppObject*, il2cpp_string_new, const char* str)
 }
 
 #undef IL2CPP_API

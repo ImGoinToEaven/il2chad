@@ -13,6 +13,10 @@ Il2CppObject *Il2Chad::Utils::create_object(Il2CppClass *klass) {
     return Imports::il2cpp_object_new(klass);
 }
 
+Il2CppObject * Il2Chad::Utils::create_string(const char *str) {
+    return Imports::il2cpp_string_new(str);
+}
+
 void Il2Chad::Utils::invoke(Il2CppObject *object, const char *method_name, void **params) {
     auto klass = get_class(object);
     auto method = Imports::il2cpp_class_get_method_from_name(klass, method_name, -1);

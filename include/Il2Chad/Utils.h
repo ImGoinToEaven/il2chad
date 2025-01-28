@@ -15,7 +15,9 @@ namespace Il2Chad::Utils {
      */
     Il2CppObject *create_object(Il2CppClass *klass);
 
-    void invoke(Il2CppObject *object, const char *method_name, void** params);
+    Il2CppObject *create_string(const char *str);
 
-    void invoke_convert_args(Il2CppObject* object, const char* method_name, void** params, int param_count);
+    void invoke(Il2CppObject *object, const char *method_name, void **params);
+
+    void invoke_convert_args(Il2CppObject *object, const char *method_name, void **params, int param_count);
 }
