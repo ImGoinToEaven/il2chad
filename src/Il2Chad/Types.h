@@ -6,6 +6,7 @@ struct Il2CppAssembly;
 struct Il2CppImage;
 class Il2CppClass;
 class Il2CppException;
+class Il2CppType;
 
 struct MethodInfo {
     void *methodPointer;

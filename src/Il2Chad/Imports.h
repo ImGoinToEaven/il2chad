@@ -24,11 +24,14 @@ namespace Il2Chad::Imports {
     IL2CPP_API(MethodInfo const*, il2cpp_class_get_methods, Il2CppClass* klass, void** iter)
 
     IL2CPP_API(char const*, il2cpp_field_get_name, FieldInfo const* field)
+    IL2CPP_API(bool, il2cpp_field_is_static, FieldInfo const* field)
     IL2CPP_API(size_t, il2cpp_field_get_offset, FieldInfo const* field)
+    IL2CPP_API(Il2CppType*, il2cpp_field_get_type, FieldInfo const* field)
 
     IL2CPP_API(char const*, il2cpp_property_get_name, PropertyInfo const* prop)
     IL2CPP_API(MethodInfo const*, il2cpp_property_get_get_method, PropertyInfo const* prop)
     IL2CPP_API(MethodInfo const*, il2cpp_property_get_set_method, PropertyInfo const* prop)
+    IL2CPP_API(Il2CppType*, il2cpp_property_get_type, PropertyInfo const* prop)
 
     IL2CPP_API(char const*, il2cpp_method_get_name, MethodInfo const* method)
 
@@ -41,6 +44,8 @@ namespace Il2Chad::Imports {
 
     //Il2CppString* il2cpp_string_new(const char* str)
     IL2CPP_API(Il2CppObject*, il2cpp_string_new, const char* str)
+
+    IL2CPP_API(const char*, il2cpp_type_get_name, Il2CppType* type)
 }
 
 #undef IL2CPP_API
