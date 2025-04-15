@@ -93,10 +93,10 @@ static bool index_class(const std::string &namespace_name, const std::string &cl
     while ((method = il2chad::il2cpp::il2cpp_class_get_methods(klass, &iter)) != nullptr) {
         const char *methodName = il2chad::il2cpp::il2cpp_method_get_name(method);
         int argCount = il2chad::il2cpp::il2cpp_method_get_param_count(method);
-        s_methods[{namespace_name, class_name, methodName, argCount}] = method->methodPointer;
+        s_methods[{namespace_name, class_name, methodName, argCount}] = (void *) method->methodPointer;
         MethodKey fallbackKey{namespace_name, class_name, methodName, -1};
         if (!s_methods.contains(fallbackKey)) {
-            s_methods[fallbackKey] = method->methodPointer;
+            s_methods[fallbackKey] = (void *) method->methodPointer;
         }
     }
 
@@ -145,4 +145,15 @@ std::size_t il2chad::metadata::get_field_offset(const std::string &namespace_nam
         return it->second;
     }
     return 0;
+}
+
+il2chad::il2cpp::Il2CppClass *il2chad::metadata::get_class(const std::string &namespace_name,
+                                                           const std::string &class_name) {
+    // todo use cache
+    for (auto *image: s_images) {
+        auto klass = il2cpp::il2cpp_class_from_name(image, namespace_name.c_str(), class_name.c_str());
+        if (klass)
+            return klass;
+    }
+    return nullptr;
 }
