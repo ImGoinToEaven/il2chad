@@ -18,6 +18,8 @@ namespace il2chad::il2cpp {
     IL2CPP_API(FieldInfo const *, il2cpp_class_get_field_from_name, Il2CppClass *klass, const char *name);
 
     IL2CPP_API(Il2CppClass *, il2cpp_object_get_class, Il2CppObject *obj);
+    IL2CPP_API(Il2CppObject *, il2cpp_object_new, Il2CppClass *klass);
+    IL2CPP_API(void, il2cpp_runtime_object_init, Il2CppObject * obj);
 
     IL2CPP_API(char const *, il2cpp_method_get_name, MethodInfo const *method)
     IL2CPP_API(int, il2cpp_method_get_param_count, const MethodInfo *method)
