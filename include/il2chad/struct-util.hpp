@@ -3,7 +3,7 @@
 #include <il2chad/il2cpp-structs.hpp>
 
 #define IL2CPP_FIELD(type, name, ...)                                                                                  \
-    type get_##name() const {                                                                                          \
+    type Get##name() const {                                                                                          \
         static il2chad::il2cpp::Il2CppClass *klass = nullptr;                                                          \
         static size_t offset = 0;                                                                                      \
                                                                                                                        \
@@ -17,7 +17,7 @@
         return *reinterpret_cast<type *>((char *) this + offset);                                                      \
     }                                                                                                                  \
                                                                                                                        \
-    void set_##name(type value) {                                                                                      \
+    void Set##name(type value) {                                                                                      \
         static il2chad::il2cpp::Il2CppClass *klass = nullptr;                                                          \
         static size_t offset = 0;                                                                                      \
                                                                                                                        \

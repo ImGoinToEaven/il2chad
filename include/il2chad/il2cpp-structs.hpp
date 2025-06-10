@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 namespace il2chad::il2cpp {
     class Il2CppDomain;
@@ -9,7 +10,7 @@ namespace il2chad::il2cpp {
 
     class Il2CppString : public Il2CppObject {
     public:
-        const char *Unbox();
+        std::string Unbox();
     };
 
     struct MethodInfo {
