@@ -8,13 +8,13 @@
         static size_t offset = 0;                                                                                      \
                                                                                                                        \
         if (!klass) {                                                                                                  \
-            klass = il2chad::il2cpp::il2cpp_object_get_class((il2chad::il2cpp::Il2CppObject *) this);                                   \
+            klass = il2chad::il2cpp::il2cpp_object_get_class((il2chad::il2cpp::Il2CppObject *) this);                  \
             auto field =                                                                                               \
                     il2chad::il2cpp::il2cpp_class_get_field_from_name(klass, IL2CPP_FIELD_NAME(name, ##__VA_ARGS__));  \
             offset = il2chad::il2cpp::il2cpp_field_get_offset(field);                                                  \
         }                                                                                                              \
                                                                                                                        \
-        return *reinterpret_cast<const type *>(reinterpret_cast<const char *>(this) + offset);                         \
+        return *reinterpret_cast<type *>((char *) this + offset);                                                      \
     }                                                                                                                  \
                                                                                                                        \
     void set_##name(type value) {                                                                                      \
@@ -22,7 +22,7 @@
         static size_t offset = 0;                                                                                      \
                                                                                                                        \
         if (!klass) {                                                                                                  \
-            klass = il2chad::il2cpp::il2cpp_object_get_class((il2chad::il2cpp::Il2CppObject *) this);                                   \
+            klass = il2chad::il2cpp::il2cpp_object_get_class((il2chad::il2cpp::Il2CppObject *) this);                  \
             auto field =                                                                                               \
                     il2chad::il2cpp::il2cpp_class_get_field_from_name(klass, IL2CPP_FIELD_NAME(name, ##__VA_ARGS__));  \
             offset = il2chad::il2cpp::il2cpp_field_get_offset(field);                                                  \

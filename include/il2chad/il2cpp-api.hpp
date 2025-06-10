@@ -36,7 +36,7 @@ namespace il2chad::il2cpp {
     IL2CPP_API(size_t, il2cpp_field_get_offset, FieldInfo const *field)
 
     IL2CPP_API(Il2CppString *, il2cpp_string_new, const char *str)
-    IL2CPP_API(Il2CppString *, il2cpp_string_chars, Il2CppString *str)
+    IL2CPP_API(const wchar_t*, il2cpp_string_chars, Il2CppString *str)
 }
 
 #undef IL2CPP_API
