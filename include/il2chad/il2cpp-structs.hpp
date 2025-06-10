@@ -8,6 +8,7 @@ namespace il2chad::il2cpp {
     class Il2CppObject {};
 
     class Il2CppString : public Il2CppObject {
+    public:
         const char *Unbox();
     };
 
