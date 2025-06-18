@@ -65,3 +65,13 @@
         }                                                                                                              \
         setter(this, value, nullptr);                                                                                  \
     }
+
+#define IL2CPP_METHOD(ret_type, name, arg0_type, ...)                                                                  \
+    ret_type name(arg0_type arg) {                                                                                     \
+        if constexpr (std::is_void_v<ret_type>) {                                                                      \
+            this->CallMethod<void>(IL2CPP_FIELD_NAME(name, ##__VA_ARGS__), arg);                                       \
+            return;                                                                                                    \
+        } else {                                                                                                       \
+            return this->CallMethod<ret_type>(IL2CPP_FIELD_NAME(name, ##__VA_ARGS__), arg);                            \
+        }                                                                                                              \
+    }
